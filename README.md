@@ -185,8 +185,8 @@ pip install -r requirements.txt
 - `mediapipe==0.10.8` - Pose estimation model
 - `numpy==1.24.3` - Numerical computing
 - `PyQt5==5.15.9` - Desktop GUI framework (for dashboard.py)
-- `flask` - Web server (for server.py)
-- `flask-cors` - CORS support for web API
+- `flask>=2.0.0` - Web server (for server.py)
+- `flask-cors>=3.0.0` - CORS support for web API
 
 ---
 
