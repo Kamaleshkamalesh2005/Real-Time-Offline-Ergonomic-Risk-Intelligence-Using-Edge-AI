@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge-AI Posture Analytics Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Hero Header -->
+        <header class="hero-header">
+            <div class="hero-content">
+                <h1 class="hero-title">Edge-Intelligent Posture Analytics</h1>
+                <p class="hero-subtitle">Real-Time AI-Powered Posture Monitoring • Privacy-First</p>
+                
+                <div class="badges-row">
+                    <div class="badge-item">
+                        <span class="badge-dot active"></span>
+                        <span class="badge-text">EDGE AI ACTIVE</span>
+                    </div>
+                    <div class="badge-item">
+                        <span class="badge-lock">🔒</span>
+                        <span class="badge-text">RUNNING OFFLINE</span>
+                    </div>
+                    <div class="badge-item">
+                        <span class="badge-lightning">⚡</span>
+                        <span class="badge-text">LOW LATENCY</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard Grid -->
+        <main class="dashboard-main">
+            <!-- Left Section: Video Feed -->
+            <section class="video-section">
+                <div class="video-wrapper">
+                    <img id="videoFeed" src="/api/video_feed" alt="Live Camera Feed" class="video-feed" />
+                    
+                    <!-- Calibration Overlay -->
+                    <div id="calibrationOverlay" class="calibration-overlay">
+                        <div class="cal-content">
+                            <div class="cal-spinner"></div>
+                            <p class="cal-text">Calibrating your posture...</p>
+                            <p class="cal-subtext">Sit naturally and remain still</p>
+                            <div class="cal-progress-bar">
+                                <div id="calProgressFill" class="cal-progress-fill"></div>
+                            </div>
+                            <p id="calPercent" class="cal-percent">0%</p>
+                        </div>
+                    </div>
+
+                    <!-- Camera Off Overlay -->
+                    <div id="cameraOffOverlay" class="camera-off-overlay hidden">
+                        <div class="off-content">
+                            <span class="off-icon">📹</span>
+                            <h3>Camera is OFF</h3>
+                            <p>Click "Start Camera" below to begin posture analysis</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Camera Controls -->
+                <div class="camera-controls-bar">
+                    <button id="cameraToggle" class="camera-btn camera-active">
+                        <span class="btn-icon">🎥</span>
+                        <span class="btn-label">Camera Active</span>
+                    </button>
+                    <span id="calibrationBadge" class="calibration-badge hidden">Calibrated ✓</span>
+                </div>
+            </section>
+
+            <!-- Right Section: Analytics Cards -->
+            <section class="analytics-section">
+                <!-- Posture Status Card -->
+                <div class="metric-card status-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Posture Status</h3>
+                        <span id="statusBadge" class="status-badge initializing">INITIALIZING</span>
+                    </div>
+                    <div class="card-content">
+                        <div id="statusValue" class="status-value initializing">—</div>
+                        <p id="statusMessage" class="status-message">Initializing system...</p>
+                    </div>
+                </div>
+
+                <!-- Health Risk Score Card -->
+                <div class="metric-card score-card">
+                    <h3 class="card-title">Health Risk Score</h3>
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <svg class="score-svg" viewBox="0 0 120 120">
+                                <circle class="score-bg" cx="60" cy="60" r="50"></circle>
+                                <circle class="score-ring" id="scoreRing" cx="60" cy="60" r="50"></circle>
+                            </svg>
+                            <div class="score-text">
+                                <span id="scoreNumber" class="score-number">0</span>
+                                <span class="score-unit">/100</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Duration Card -->
+                <div class="metric-card duration-card">
+                    <h3 class="card-title">Posture Duration</h3>
+                    <div class="duration-stats">
+                        <div class="duration-item good">
+                            <span class="duration-icon">✓</span>
+                            <span class="duration-label">Good</span>
+                            <span id="goodDuration" class="duration-time">0s</span>
+                        </div>
+                        <div class="duration-item poor">
+                            <span class="duration-icon">⚠</span>
+                            <span class="duration-label">Poor</span>
+                            <span id="badDuration" class="duration-time">0s</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Info Card -->
+                <div class="metric-card info-card">
+                    <h3 class="card-title">System Info</h3>
+                    <div class="info-stats">
+                        <div class="info-item">
+                            <span class="info-label">📊 FPS</span>
+                            <span id="fpsValue" class="info-value">0</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">🎯 Status</span>
+                            <span id="systemStatus" class="info-value status-online">●Online</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer Feedback -->
+        <footer class="feedback-footer">
+            <span class="feedback-icon">💡</span>
+            <p id="feedbackMessage" class="feedback-text">Initializing system...</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
